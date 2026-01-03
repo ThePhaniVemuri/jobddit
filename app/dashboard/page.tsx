@@ -54,6 +54,18 @@ export default async function DashboardPage() {
         appliedjobs?.map((row) => row.job).filter((job): job is Job => job !== null) ?? [];
     const noappliedjobs = appliedJobs.length
 
+    async function isPremiumUser(userId: string) {
+      const { data } = await supabase
+        .from("user_purchases")
+        .select("id")
+        .eq("user_id", userId)
+        .eq("status", "paid")
+        .limit(1)
+        .single();
+
+      return !!data;
+    }
+
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-12">
@@ -61,6 +73,7 @@ export default async function DashboardPage() {
       <div>
         <h1 className="text-3xl font-black text-brand-dark">Dashboard</h1>
         <p className="text-gray-600 font-medium">Welcome back, {user.email}</p>
+        {await isPremiumUser(user.id) ? "You are a Pro user🔶!" : <></>}
       </div>
 
       {/* Stats Grid – leave placeholder for now */}
