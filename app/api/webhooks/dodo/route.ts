@@ -8,26 +8,27 @@ import { supabaseAdmin } from "@/libs/supabase/supabase-admin";
 const webhook = new Webhook(process.env.DODO_WEBHOOK_KEY!);
 
 type PaymentWebhookData = {
-  event_type?: string;
   type?: string;
+  event_type?: string;
 
-  id?: string;
-  payment_id?: string;
+  data?: {
+    payment_id?: string;
+    checkout_session_id?: string;
+    currency?: string;
+    total_amount?: number;
+    status?: string;
 
-  customer?: {
-    email?: string;
+    metadata?: {
+      user_id?: string;
+      product_id?: string;
+    };
+
+    customer?: {
+      email?: string;
+    };
   };
-
-  customer_email?: string;
-
-  metadata?: {
-    user_id?: string;
-    product_id?: string;
-  };
-
-  amount_total?: number;
-  currency?: string;
 };
+
 
 
 // Webhook to handle payment confirmations from Dodo Payments
@@ -66,14 +67,23 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function handleOneTimePaymentSuccess(data: PaymentWebhookData) {
-  // 🔑 user_id MUST come from metadata (set during checkout)
+async function handleOneTimePaymentSuccess(body: PaymentWebhookData) {
+  const data = body.data;
+
+  if (!data) {
+    console.error("Missing data object in webhook payload");
+    return;
+  }
+
   const userId = data.metadata?.user_id;
-  const email = data.customer?.email || data.customer_email;
-  const paymentId = data.payment_id || data.id;
+  const paymentId = data.payment_id;
+  const email = data.customer?.email;
 
   if (!userId || !paymentId) {
-    console.error("Missing user_id or payment_id in webhook");
+    console.error("Missing user_id or payment_id in webhook", {
+      userId,
+      paymentId,
+    });
     return;
   }
 
@@ -81,25 +91,23 @@ async function handleOneTimePaymentSuccess(data: PaymentWebhookData) {
   const { data: existing } = await supabaseAdmin
     .from("user_purchases")
     .select("id")
-    .eq("checkout_session_id", paymentId)
+    .eq("checkout_session_id", data.checkout_session_id ?? paymentId)
     .maybeSingle();
 
-  if (existing) {
-    // Payment already processed
-    return;
-  }
+  if (existing) return;
 
   // ✅ Insert purchase record
   await supabaseAdmin.from("user_purchases").insert({
     user_id: userId,
     email,
-    product_id: data.metadata?.product_id || "prod_onetime_3usd",
+    product_id: data.metadata?.product_id,
 
-    checkout_session_id: paymentId,
+    checkout_session_id: data.checkout_session_id ?? paymentId,
 
-    amount: data.amount_total ?? 300,
-    currency: data.currency ?? "USD",
+    amount: data.total_amount,
+    currency: data.currency,
 
     status: "paid",
   });
 }
+
