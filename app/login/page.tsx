@@ -15,7 +15,7 @@ export default function LoginPage() {
             options: {
                 // set this to false if you do not want the user to be automatically signed up
                 shouldCreateUser: true,
-                emailRedirectTo: 'http://localhost:3000/dashboard',
+                emailRedirectTo: 'https://jobddit.vercel.app/dashboard',
             },
         })
     }
@@ -24,7 +24,7 @@ export default function LoginPage() {
         supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: `http://localhost:3000/auth/callback`,
+                redirectTo: `https://jobddit.vercel.app/auth/callback`,
             }
         })
     }
