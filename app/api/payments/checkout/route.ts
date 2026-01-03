@@ -3,8 +3,7 @@ import DodoPayments from "dodopayments";
 import { createClient } from "@/libs/supabase/server";
 
 const client = new DodoPayments({
-  bearerToken: process.env.DODO_PAYMENTS_API_KEY!,
-  environment: "test_mode",
+  bearerToken: process.env.DODO_PAYMENTS_API_KEY!,  
 });
 
 export async function POST() {
