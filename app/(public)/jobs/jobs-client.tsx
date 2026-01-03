@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import RealtimeJobs from "./realtime-jobs";
 import { Job } from "@/libs/reddit/steady-api-reddit";
+import { redirect } from "next/navigation";
 
 const JOB_TYPES = ["Full-time", "Contract", "Freelance", "Part-time"];
 const SUBREDDITS = [
@@ -139,7 +140,19 @@ export default function JobsClient({ initialJobs }: { initialJobs: Job[] }) {
                     </label>
                   ))}
                 </div>
-              </Card>
+              </Card>              
+
+                <div className="mt-auto">
+                <div className="rounded-xl border-2 border-brand-dark bg-yellow-100 p-4 shadow-brutal-sm">
+                    <p className="text-xs font-bold text-brand-dark mb-2">Help me improve this!</p>
+                    <p className="text-xs font-medium text-gray-700 mb-2">join waitlist for pro features including AI</p>
+                    <button className="w-full rounded border-2 border-brand-dark bg-white py-1 text-xs font-black shadow-sm hover:translate-x-1 hover:translate-y-1 transition-transform" onClick={()=>redirect('/payment')}>
+                        join waitlist
+                    </button>
+                </div>
+
+            </div>
+
             </div>
           </aside>
 

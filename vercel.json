@@ -3,7 +3,7 @@
   "crons": [
     {
       "path": "/api/cron/fetch-reddit",
-      "schedule": "*/40 * * * *"
+      "schedule": "0 6 * * *"
     }
   ]
 }

@@ -34,15 +34,7 @@ export function DashboardSidebar() {
                 ))}
             </nav>
 
-            <div className="mt-auto">
-                <div className="rounded-xl border-2 border-brand-dark bg-yellow-100 p-4 shadow-brutal-sm">
-                    <p className="text-xs font-bold text-brand-dark mb-2">Pro Plan</p>
-                    <p className="text-xs font-medium text-gray-700 mb-2">Get instant alerts and unlimited searches.</p>
-                    <button className="w-full rounded border-2 border-brand-dark bg-white py-1 text-xs font-black shadow-sm hover:translate-x-1 hover:translate-y-1 transition-transform">
-                        Upgrade
-                    </button>
-                </div>
-            </div>
+            
         </aside>
     );
 }

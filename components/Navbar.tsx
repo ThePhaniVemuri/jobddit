@@ -14,6 +14,9 @@ export function Navbar() {
                     <div className="hidden md:flex items-center gap-6 text-sm font-bold text-brand-dark">
                         <Link href="/jobs" className="hover:text-brand-orange transition-colors">
                             Browse Jobs
+                        </Link>                        
+                        <Link href="/pricing" className="hover:text-brand-orange transition-colors">
+                            Early Access (Pro)
                         </Link>
                         {/* <Link href="/dashboard" className="hover:text-brand-orange transition-colors">
                             Gigs
