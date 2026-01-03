@@ -1,10 +1,11 @@
+export const runtime = "nodejs";
+
 import { NextRequest, NextResponse } from "next/server";
 import { Webhook } from "standardwebhooks";
 import { headers } from "next/headers";
 import { supabaseAdmin } from "@/libs/supabase/supabase-admin";
 
 const webhook = new Webhook(process.env.DODO_WEBHOOK_KEY!);
-
 
 type PaymentWebhookData = {
   event_type?: string;
