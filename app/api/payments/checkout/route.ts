@@ -30,7 +30,7 @@ export async function POST() {
       user_id: user.id, // 🔑 critical
       product_id: process.env.DODO_PAYMENTS_PRODUCT_ID!
     },
-    return_url: `${process.env.NEXT_PUBLIC_APP_URL}/billing/success`,
+    return_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard`,
   });
 
   return NextResponse.json({
