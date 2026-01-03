@@ -146,7 +146,7 @@ export default function JobsClient({ initialJobs }: { initialJobs: Job[] }) {
                 <div className="rounded-xl border-2 border-brand-dark bg-yellow-100 p-4 shadow-brutal-sm">
                     <p className="text-xs font-bold text-brand-dark mb-2">Help me improve this!</p>
                     <p className="text-xs font-medium text-gray-700 mb-2">join waitlist for pro features including AI</p>
-                    <button className="w-full rounded border-2 border-brand-dark bg-white py-1 text-xs font-black shadow-sm hover:translate-x-1 hover:translate-y-1 transition-transform" onClick={()=>redirect('/payment')}>
+                    <button className="w-full rounded border-2 border-brand-dark bg-white py-1 text-xs font-black shadow-sm hover:translate-x-1 hover:translate-y-1 transition-transform" onClick={()=>redirect('/pricing')}>
                         join waitlist
                     </button>
                 </div>

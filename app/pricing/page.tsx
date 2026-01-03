@@ -27,7 +27,7 @@ export default function PricingPage() {
         }
         else{
             buyPremium();
-        }
+        }   
     }
         
   return (        
@@ -101,7 +101,7 @@ export default function PricingPage() {
               <li>✍️ Personalized messages to founders</li>
             </ul>
 
-            <Button size="lg" className="mt-auto w-full" onClick={()=>{handleClick}}>
+            <Button size="lg" className="mt-auto w-full" onClick={handleClick}>
               Unlock Pro for $3
             </Button>
           </Card>
