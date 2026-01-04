@@ -78,6 +78,11 @@ export async function getPosts(subreddit : string){
   })
 
   if (!res.ok) {
+    const errorText = await res.text();
+    console.error("SteadyAPI error", {
+      status: res.status,
+      body: errorText,
+    });
     throw new Error("Failed to fetch Reddit posts")
   }
 
