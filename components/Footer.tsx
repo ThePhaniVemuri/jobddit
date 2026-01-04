@@ -40,7 +40,7 @@ export function Footer() {
                     </div>
                 </div>
                 <div className="mt-12 flex items-center justify-between border-t-2 border-brand-dark pt-8">
-                    <p className="text-sm font-bold text-gray-500">© 2024 Jobddit Inc.</p>
+                    <p className="text-sm font-bold text-gray-500">© 2026 Jobddit Inc.</p>
                     <div className="flex gap-4">
                         {/* Social icons placeholder */}
                         <div className="h-6 w-6 rounded-full bg-brand-dark"></div>
