@@ -8,6 +8,7 @@ const BLOCKED_WORDS = [
   // "signals",
   "[for hire]",
   "[offer]",
+  "[hire me]",
 ];
 
 // Regex patterns catch intent, not just words

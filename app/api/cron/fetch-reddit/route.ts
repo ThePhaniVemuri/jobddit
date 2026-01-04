@@ -5,11 +5,12 @@ import { getPosts } from "@/libs/reddit/steady-api-reddit";
 import { passesBasicFilters } from "@/libs/reddit/reddit-filters";
 
 const SUBREDDITS = [
-  "jobs",  
+  // "jobs",  
   "hiring",
   // "jobhunting",  
   "remotejobs",
-  // "jobbit",
+  "jobbit",
+  "freelance_forhire",
   // "freelance"
 ];
 
