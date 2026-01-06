@@ -112,7 +112,7 @@ export function JobCard({ job }: { job: Job }) {
             </Button>
             ) : (
             <Button variant="outline" size="sm" onClick={handleApply}>
-                Apply
+                Mark as Applied
             </Button>
             )}
         </div>
