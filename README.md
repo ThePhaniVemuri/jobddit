@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jobddit
 
-## Getting Started
+Jobddit is a modern job-aggregation web app that combines Reddit scrapers, and user features to help job seekers discover, save, and evaluate job postings quickly. Built with Next.js (App Router) and Supabase, Jobddit focuses on realtime updates, simple saved-job management, and easy payments/webhooks integration.
 
-First, run the development server:
+live at: https://jobddit.vercel.app/
 
+## Table of contents
+- [Features](#features)
+- [Tech stack](#tech-stack)
+- [Architecture](#architecture)
+- [Getting started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Environment variables](#environment-variables)
+  - [Run locally](#run-locally)
+- [Deployment](#deployment)
+- [Folder overview](#folder-overview)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+- Aggregates job posts from Reddit and other sources (see `libs/reddit`).
+- Client-side saved-jobs with persistent storage (Supabase).
+- Realtime updates and pagination for job lists.
+- AI-assisted job analysis (see `libs/ai/gemini-job-analyzer.ts`).
+- Payment / checkout webhook integrations (Dodo example under `app/api/webhooks`).
+
+## Tech stack
+- Next.js (App Router, TypeScript)
+- React + Server Components
+- Supabase for auth, database, and storage
+- Vercel for hosting (recommended)
+- Optional: AI integrations (Gemini API), Reddit scraping scripts, and server cron jobs
+
+## Architecture
+Add your architecture diagram at `public/architecture.png`. When ready, drop your image there and it will render below.
+
+![Architecture placeholder](public/architecture.png)
+
+## Getting started
+
+### Prerequisites
+- Node.js 18+ (or current LTS)
+- npm, yarn, or pnpm
+- A Supabase project (for dev and production)
+
+### Install
 ```bash
-npm run dev
+git clone <your-repo-url>
+cd jobddit
+npm install
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
