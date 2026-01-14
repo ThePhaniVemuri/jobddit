@@ -33,7 +33,7 @@ live at: https://jobddit.vercel.app/
 - Optional: AI integrations (Gemini API), Reddit scraping scripts, and server cron jobs
 
 ## Architecture
-Add your architecture diagram at `public/architecture.png`. When ready, drop your image there and it will render below.
+This is the first basic architecture i drawn when i was starting to build jobddit.
 
 ![Architecture placeholder](public/architecture.png)
 
